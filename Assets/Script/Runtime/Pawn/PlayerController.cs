@@ -1,3 +1,4 @@
+using TarodevController;
 using UnityEngine;
 
 namespace Script.Runtime.Pawn
@@ -69,12 +70,5 @@ namespace Script.Runtime.Pawn
             _playerVelocity.y += gravityValue * Time.deltaTime;
             GetCharacterController().Move(_playerVelocity * Time.deltaTime);
         }
-    }
-
-    public enum CharacterType
-    {
-        Ant,
-        GrassHopper,
-        Beetle
     }
 }
