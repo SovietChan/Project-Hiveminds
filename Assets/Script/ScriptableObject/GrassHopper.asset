@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: GrassHopper
   m_EditorClassIdentifier: 
   Type: 1
+  IsInfected: 0
+  IsControlled: 0
+  HealtySprite: {fileID: 21300000, guid: ed731bf52608f0742bd99e6d85247db5, type: 3}
+  InfectedSprite: {fileID: 21300000, guid: 82276b0ede888534b880117dda19af81, type: 3}
   gravityStrength: -10
   gravityScale: 1.0193679
   fallGravityMult: 100

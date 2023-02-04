@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Script.Runtime.Pawn
@@ -41,7 +42,12 @@ namespace Script.Runtime.Pawn
 
 		private Vector2 _moveInput;
 		public float LastPressedJumpTime { get; private set; }
+		[SerializeField]
+		public bool IsInfected;
+		[SerializeField]
+		public bool IsControlled;
 
+		[SerializeField] private SpriteRenderer _pointer;
 		//Set all of these up in the inspector
 		[Header("Checks")] [SerializeField] private Transform _groundCheckPoint;
 
@@ -55,7 +61,7 @@ namespace Script.Runtime.Pawn
 		private LayerMask _groundLayer;
 
 		#endregion
-
+		
 		private void Awake()
 		{
 			RB = GetComponent<Rigidbody2D>();
@@ -65,6 +71,20 @@ namespace Script.Runtime.Pawn
 		{
 			SetGravityScale(Data.gravityScale);
 			IsFacingRight = true;
+			if (IsInfected)
+			{
+				gameObject.GetComponent<SpriteRenderer>().sprite = Data.InfectedSprite;
+			}
+			else
+			{
+				gameObject.GetComponent<SpriteRenderer>().sprite = Data.HealtySprite;
+			}
+
+			if (IsControlled)
+			{
+				_pointer.gameObject.SetActive(true);
+			}
+			
 		}
 
 		private void Update()
@@ -82,22 +102,25 @@ namespace Script.Runtime.Pawn
 
 			#region INPUT HANDLER
 
-			_moveInput.x = Input.GetAxisRaw("Horizontal");
-			_moveInput.y = Input.GetAxisRaw("Vertical");
-
-			if (_moveInput.x != 0)
-				CheckDirectionToFace(_moveInput.x > 0);
-
-			if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
+			if (IsInfected && IsControlled)
 			{
-				OnJumpInput();
-			}
+				_moveInput.x = Input.GetAxisRaw("Horizontal");
+				_moveInput.y = Input.GetAxisRaw("Vertical");
 
-			if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.J))
-			{
-				OnJumpUpInput();
-			}
+				if (_moveInput.x != 0)
+					CheckDirectionToFace(_moveInput.x > 0);
 
+				if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
+				{
+					OnJumpInput();
+				}
+
+				if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.J))
+				{
+					OnJumpUpInput();
+				}
+			}
+			
 			#endregion
 
 			#region COLLISION CHECKS
@@ -240,6 +263,13 @@ namespace Script.Runtime.Pawn
 			//Handle Slide
 			if (IsSliding)
 				Slide();
+		}
+
+		public void ControlInsect(bool isControlled)
+		{
+			Debug.Log("Insect Controlled "+isControlled);
+			IsControlled = isControlled;
+			_pointer.gameObject.SetActive(isControlled);
 		}
 
 		#region INPUT CALLBACKS

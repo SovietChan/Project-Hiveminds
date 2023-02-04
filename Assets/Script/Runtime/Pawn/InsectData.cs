@@ -5,7 +5,11 @@ namespace Script.Runtime.Pawn
     [CreateAssetMenu(menuName = "Player Data")] //Create a new playerData object by right clicking in the Project Menu then Create/Player/Player Data and drag onto the player
 public class InsectData : ScriptableObject
 {
-	[Header("Config")] public InsectType Type;
+	[Header("Config")] 
+	public InsectType Type;
+	
+	public Sprite HealtySprite;
+	public Sprite InfectedSprite;
 	
 	[Header("Gravity")]
 	[HideInInspector] public float gravityStrength; //Downwards force (gravity) needed for the desired jumpHeight and jumpTimeToApex.

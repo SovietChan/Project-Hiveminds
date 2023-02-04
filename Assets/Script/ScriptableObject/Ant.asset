@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Ant
   m_EditorClassIdentifier: 
   Type: 1
+  IsInfected: 0
+  IsControlled: 0
+  HealtySprite: {fileID: 21300000, guid: 1c65fc5508a032249ab2cc8a436e7e23, type: 3}
+  InfectedSprite: {fileID: 21300000, guid: 0e0f3345fff4bad41a9f2438500b0a5c, type: 3}
   gravityStrength: -0
   gravityScale: 0
   fallGravityMult: 100
