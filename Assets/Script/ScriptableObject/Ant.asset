@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: Ant
   m_EditorClassIdentifier: 
   Type: 1
-  IsInfected: 0
-  IsControlled: 0
   HealtySprite: {fileID: 21300000, guid: 1c65fc5508a032249ab2cc8a436e7e23, type: 3}
   InfectedSprite: {fileID: 21300000, guid: 0e0f3345fff4bad41a9f2438500b0a5c, type: 3}
-  gravityStrength: -0
-  gravityScale: 0
+  gravityStrength: -2
+  gravityScale: 0.20387359
   fallGravityMult: 100
   maxFallSpeed: 100
   fastFallGravityMult: 2
@@ -28,12 +26,12 @@ MonoBehaviour:
   runAccelAmount: 40.625
   runDecceleration: 16
   runDeccelAmount: 50
-  accelInAir: 0.241
-  deccelInAir: 0.044
-  doConserveMomentum: 1
-  jumpHeight: 0
+  accelInAir: 0
+  deccelInAir: 0
+  doConserveMomentum: 0
+  jumpHeight: 1
   jumpTimeToApex: 1
-  jumpForce: 0
+  jumpForce: 2
   jumpCutGravityMult: 10
   jumpHangGravityMult: 0.147
   jumpHangTimeThreshold: 0.5

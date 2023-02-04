@@ -1,5 +1,7 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Script.Runtime.Pawn
 {
@@ -47,6 +49,9 @@ namespace Script.Runtime.Pawn
 		[SerializeField]
 		public bool IsControlled;
 
+		private InsectController _interactedInsect;
+		
+
 		[SerializeField] private SpriteRenderer _pointer;
 		//Set all of these up in the inspector
 		[Header("Checks")] [SerializeField] private Transform _groundCheckPoint;
@@ -60,6 +65,7 @@ namespace Script.Runtime.Pawn
 		[Header("Layers & Tags")] [SerializeField]
 		private LayerMask _groundLayer;
 
+		public UnityEvent<InsectController> OnInfect;
 		#endregion
 		
 		private void Awake()
@@ -84,7 +90,12 @@ namespace Script.Runtime.Pawn
 			{
 				_pointer.gameObject.SetActive(true);
 			}
-			
+
+		}
+
+		public void RegisterEvent(UnityAction<InsectController> onInfect)
+		{
+			OnInfect.AddListener(onInfect);
 		}
 
 		private void Update()
@@ -118,6 +129,17 @@ namespace Script.Runtime.Pawn
 				if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.J))
 				{
 					OnJumpUpInput();
+				}
+
+				if (Input.GetKeyUp(KeyCode.F))
+				{
+					if (!_interactedInsect.IsInfected && _interactedInsect != null)
+					{
+						_interactedInsect.InfectInsect(true);
+						_interactedInsect.ControlInsect(true);
+						OnInfect.Invoke(_interactedInsect);
+						ControlInsect(false);	
+					}
 				}
 			}
 			
@@ -265,9 +287,30 @@ namespace Script.Runtime.Pawn
 				Slide();
 		}
 
+	
+		private void OnTriggerEnter2D(Collider2D col)
+		{
+			if (col.CompareTag("Player"))
+			{
+				_interactedInsect = col.GetComponent<InsectController>();
+			}
+		}
+
+		private void OnTriggerExit2D(Collider2D col)
+		{
+			if (col.CompareTag("Player"))
+			{
+				_interactedInsect = null;
+			}
+		}
+
+		public void InfectInsect(bool isInfected)
+		{
+			IsInfected = isInfected;
+			gameObject.GetComponent<SpriteRenderer>().sprite = Data.InfectedSprite;
+		}
 		public void ControlInsect(bool isControlled)
 		{
-			Debug.Log("Insect Controlled "+isControlled);
 			IsControlled = isControlled;
 			_pointer.gameObject.SetActive(isControlled);
 		}
