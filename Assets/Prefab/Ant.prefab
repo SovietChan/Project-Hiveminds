@@ -468,7 +468,7 @@ MonoBehaviour:
   OnInfect:
     m_PersistentCalls:
       m_Calls: []
-  runSpeed: 1
+  runSpeed: 20
 --- !u!50 &4055722851028158342
 Rigidbody2D:
   serializedVersion: 4

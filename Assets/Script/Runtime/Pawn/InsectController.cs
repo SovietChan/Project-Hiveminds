@@ -317,7 +317,7 @@ namespace Script.Runtime.Pawn
 
 		float horizontal;
 		float vertical;
-		float moveLimiter = 20.5f;
+		float moveLimiter = 0.7f;
 
 		public float runSpeed = 20.0f;
 		
