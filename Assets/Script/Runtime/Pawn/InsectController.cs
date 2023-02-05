@@ -56,6 +56,8 @@ namespace Script.Runtime.Pawn
 		//Set all of these up in the inspector
 		[Header("Checks")] [SerializeField] private Transform _groundCheckPoint;
 
+		private Vector3 _lastPos;
+
 		//Size of groundCheck depends on the size of your character generally you want them slightly small than width (for ground) and height (for the wall check)
 		[SerializeField] private Vector2 _groundCheckSize = new Vector2(0.49f, 0.03f);
 		[Space(5)] [SerializeField] private Transform _frontWallCheckPoint;
