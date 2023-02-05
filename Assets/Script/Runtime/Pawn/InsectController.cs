@@ -71,8 +71,6 @@ namespace Script.Runtime.Pawn
 
 		public UnityEvent<InsectController> OnInfect;
 
-		//cek injakan
-		public Vector3 _feetPos;
 		#endregion
 		
 		private void Awake()
@@ -155,6 +153,24 @@ namespace Script.Runtime.Pawn
 						ControlInsect(false);	
 					}
 				}
+				//iqbal untuk ddeteksi kaki
+				transform.GetChild(1).GetComponent<insectFeetDetect>()._readyToDetect = true;
+				GetComponent<Rigidbody2D>().gravityScale = 1;
+
+			}
+			else if(IsInfected&&!IsControlled)
+            {
+				if(transform.GetChild(1).GetComponent<insectFeetDetect>()._feetPos !=Vector3.zero)
+                {
+					GetComponent<Rigidbody2D>().gravityScale = 0;
+					if(transform.GetChild(1).GetComponent<insectFeetDetect>()._insectDiinjak!=null)
+                    {
+						transform.position = transform.GetChild(1).GetComponent<insectFeetDetect>()._insectDiinjak.transform.position + transform.GetChild(1).GetComponent<insectFeetDetect>()._feetPos;
+
+					}
+					
+				}
+				transform.GetChild(1).GetComponent<insectFeetDetect>()._readyToDetect = false;
 			}
 			
 			#endregion
@@ -293,7 +309,7 @@ namespace Script.Runtime.Pawn
 
 		float horizontal;
 		float vertical;
-		float moveLimiter = 0.7f;
+		float moveLimiter = 2.5f;
 
 		public float runSpeed = 20.0f;
 		
@@ -314,14 +330,15 @@ namespace Script.Runtime.Pawn
 			{
 				case InsectType.Beetle:
 				{
-					if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+					if (horizontal != 0 || vertical != 0) // Check for diagonal movement
 					{
 						// limit movement speed diagonally, so you move at 70% speed
-						horizontal *= moveLimiter;
-						vertical *= moveLimiter;
+						//horizontal *= moveLimiter;
+						//vertical *= moveLimiter;
+							transform.position += new Vector3(horizontal, vertical, 0) * moveLimiter * Time.deltaTime;
 					} 
 
-					RB.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+					//RB.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
 					break;
 				}
 				case InsectType.Ant:
@@ -349,6 +366,7 @@ namespace Script.Runtime.Pawn
 						}
 						
 					} 
+					//deteksiTembok
 
 					RB.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeeds);
 					break;
@@ -367,7 +385,7 @@ namespace Script.Runtime.Pawn
 		}
 		public void ControlInsect(bool isControlled)
 		{
-			if (isControlled)
+			if (isControlled&&Data.Type!=InsectType.Beetle)
 			{
 				gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
 			}
