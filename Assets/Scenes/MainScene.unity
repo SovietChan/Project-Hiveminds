@@ -290,54 +290,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &117757303 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5579179704144757369, guid: b3337354f7ff79240af10dbd2594c921,
-    type: 3}
-  m_PrefabInstance: {fileID: 5579179705068807454}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &117757306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117757303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25d93a371de28a8499a30656cb893ae2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _readyToDetect: 1
-  _thisInsectController: {fileID: 0}
-  _feetPos: {x: 0, y: 0, z: 0}
-  _insectDiinjak: {fileID: 0}
---- !u!61 &117757307
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117757303}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
 --- !u!4 &208347224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5579179705004377414, guid: b3337354f7ff79240af10dbd2594c921,
@@ -356,38 +308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19765bb1e4047e44cb3cf233677f7ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &273258651 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4055722850569391366, guid: bb47b00f7b17acf4aa16ff93969a565b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4055722850087545867}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &273258654
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 273258651}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,54 +843,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1093480773 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4055722851487763042, guid: bb47b00f7b17acf4aa16ff93969a565b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4055722850087545867}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1093480776
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093480773}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
---- !u!114 &1093480777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093480773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25d93a371de28a8499a30656cb893ae2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _readyToDetect: 1
-  _thisInsectController: {fileID: 0}
-  _feetPos: {x: 0, y: 0, z: 0}
-  _insectDiinjak: {fileID: 0}
 --- !u!4 &1209068422 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4055722851028158349, guid: bb47b00f7b17acf4aa16ff93969a565b,
@@ -1249,54 +1121,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!1 &2041459151 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6968160346112729132, guid: 24f15479ca02f744ab3aa01346906985,
-    type: 3}
-  m_PrefabInstance: {fileID: 6968160344153176789}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2041459154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041459151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25d93a371de28a8499a30656cb893ae2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _readyToDetect: 1
-  _thisInsectController: {fileID: 0}
-  _feetPos: {x: 0, y: 0, z: 0}
-  _insectDiinjak: {fileID: 0}
---- !u!61 &2041459155
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041459151}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
 --- !u!1001 &4055722850087545867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1304,16 +1128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 446703698}
     m_Modifications:
-    - target: {fileID: 4055722851028158336, guid: bb47b00f7b17acf4aa16ff93969a565b,
-        type: 3}
-      propertyPath: IsInfected
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4055722851028158336, guid: bb47b00f7b17acf4aa16ff93969a565b,
-        type: 3}
-      propertyPath: IsControlled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4055722851028158349, guid: bb47b00f7b17acf4aa16ff93969a565b,
         type: 3}
       propertyPath: m_RootOrder
@@ -1383,6 +1197,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 446703698}
     m_Modifications:
+    - target: {fileID: 5579179705004377412, guid: b3337354f7ff79240af10dbd2594c921,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5579179705004377414, guid: b3337354f7ff79240af10dbd2594c921,
         type: 3}
       propertyPath: m_RootOrder

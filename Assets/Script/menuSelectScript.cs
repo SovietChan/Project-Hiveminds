@@ -17,8 +17,8 @@ public class menuSelectScript : MonoBehaviour
         
     }
 
-    public void selectLevel(int i)
+    public void selectLevel(string sceneName)
     {
-        SceneManager.LoadScene(i);
+        SceneManager.LoadScene(sceneName);
     }
 }
