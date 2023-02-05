@@ -49,8 +49,8 @@ namespace Script.Runtime.Pawn
 		[SerializeField]
 		public bool IsControlled;
 
-		private InsectController _interactedInsect;
-		
+		[SerializeField] private HeadController _headController;
+
 
 		[SerializeField] private SpriteRenderer _pointer;
 		//Set all of these up in the inspector
@@ -133,11 +133,12 @@ namespace Script.Runtime.Pawn
 
 				if (Input.GetKeyUp(KeyCode.F))
 				{
-					if (!_interactedInsect.IsInfected && _interactedInsect != null)
+					if(_headController.GetInteractedInsect() == null)return;
+					if (!_headController.GetInteractedInsect().IsInfected)
 					{
-						_interactedInsect.InfectInsect(true);
-						_interactedInsect.ControlInsect(true);
-						OnInfect.Invoke(_interactedInsect);
+						_headController.GetInteractedInsect().InfectInsect(true);
+						_headController.GetInteractedInsect().ControlInsect(true);
+						OnInfect.Invoke(_headController.GetInteractedInsect());
 						ControlInsect(false);	
 					}
 				}
@@ -288,29 +289,21 @@ namespace Script.Runtime.Pawn
 		}
 
 	
-		private void OnTriggerEnter2D(Collider2D col)
-		{
-			if (col.CompareTag("Player"))
-			{
-				_interactedInsect = col.GetComponent<InsectController>();
-			}
-		}
-
-		private void OnTriggerExit2D(Collider2D col)
-		{
-			if (col.CompareTag("Player"))
-			{
-				_interactedInsect = null;
-			}
-		}
+	
 
 		public void InfectInsect(bool isInfected)
 		{
 			IsInfected = isInfected;
 			gameObject.GetComponent<SpriteRenderer>().sprite = Data.InfectedSprite;
+			
 		}
 		public void ControlInsect(bool isControlled)
 		{
+			if (isControlled)
+			{
+				gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+			}
+			
 			IsControlled = isControlled;
 			_pointer.gameObject.SetActive(isControlled);
 		}

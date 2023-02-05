@@ -21,9 +21,10 @@ namespace Script.Runtime
             for (int i = 0; i < _allInsect.Count; i++)
             {
                 _allInsect[i].RegisterEvent(AddInfectedInsect);
-                if (_allInsect[i].IsControlled)
+
+                if (_allInsect[i].IsInfected)
                 {
-                    _currentInsectIndex = i;
+                    _infectedInsects.Add(_allInsect[i]);
                 }
             }
         }
@@ -39,14 +40,15 @@ namespace Script.Runtime
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                Debug.Log("Kepanggil");
+                Debug.Log("Insect Index : "+ _currentInsectIndex);
+                if(_infectedInsects.Count < 2) return;
                 if (_currentInsectIndex > 0)
                 {
+                    _infectedInsects[_currentInsectIndex].ControlInsect(false);
                     _currentInsectIndex--;
                     _infectedInsects[_currentInsectIndex].ControlInsect(true);
-                    _infectedInsects[_currentInsectIndex+1].ControlInsect(false);
                 }
-                else if(_infectedInsects.Count > 0)
+                else
                 {
                     _infectedInsects[_currentInsectIndex].ControlInsect(false);
                     _currentInsectIndex = _infectedInsects.Count - 1;
@@ -55,13 +57,16 @@ namespace Script.Runtime
             }
             if(Input.GetKeyDown(KeyCode.E))
             {
-                if (_currentInsectIndex < _infectedInsects.Count)
+                Debug.Log("Insect Index : "+ _currentInsectIndex);
+                if(_infectedInsects.Count < 2) return;
+                if (_currentInsectIndex < _infectedInsects.Count-1)
                 {
+                    _infectedInsects[_currentInsectIndex].ControlInsect(false);
                     _currentInsectIndex++;
                     _infectedInsects[_currentInsectIndex].ControlInsect(true);
-                    _infectedInsects[_currentInsectIndex-1].ControlInsect(false);
+                   
                 }
-                else if(_infectedInsects.Count > 0)
+                else 
                 {
                     _infectedInsects[_currentInsectIndex].ControlInsect(false);
                     _currentInsectIndex = 0;
