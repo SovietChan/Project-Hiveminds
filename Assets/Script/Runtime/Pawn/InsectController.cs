@@ -94,7 +94,6 @@ namespace Script.Runtime.Pawn
 			{
 				_pointer.gameObject.SetActive(true);
 			}
-
 		}
 
 		public void RegisterEvent(UnityAction<InsectController> onInfect)

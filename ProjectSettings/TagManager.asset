@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
+  - rock
+=======
   - Ground
+>>>>>>> origin/develop
   layers:
   - Default
   - TransparentFX
