@@ -17,8 +17,8 @@ MonoBehaviour:
   InfectedSprite: {fileID: 21300000, guid: 75d597b37a6ef484997d3e55da4280c6, type: 3}
   gravityStrength: -2
   gravityScale: 0.20387359
-  fallGravityMult: 1
-  maxFallSpeed: 1
+  fallGravityMult: 0
+  maxFallSpeed: 0
   fastFallGravityMult: 1
   maxFastFallSpeed: 1
   runMaxSpeed: 1
