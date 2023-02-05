@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6968160345161202866}
   - component: {fileID: 6968160345161202867}
   - component: {fileID: 6968160345161202864}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrassHopper
   m_TagString: Player
   m_Icon: {fileID: 0}

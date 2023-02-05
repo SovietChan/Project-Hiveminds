@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b385f84f8fb6e94686cda55879bee3d, type: 3}
   m_Name: Ant
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 0
   HealtySprite: {fileID: 21300000, guid: 1c65fc5508a032249ab2cc8a436e7e23, type: 3}
   InfectedSprite: {fileID: 21300000, guid: 0e0f3345fff4bad41a9f2438500b0a5c, type: 3}
   gravityStrength: -2
@@ -26,8 +26,8 @@ MonoBehaviour:
   runAccelAmount: 40.625
   runDecceleration: 16
   runDeccelAmount: 50
-  accelInAir: 0.15
-  deccelInAir: 0.272
+  accelInAir: 0
+  deccelInAir: 0
   doConserveMomentum: 0
   jumpHeight: 1
   jumpTimeToApex: 1

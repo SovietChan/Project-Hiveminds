@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 5579179705004377413}
   - component: {fileID: 5579179705004377412}
   - component: {fileID: 5579179705004377415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Beetle
   m_TagString: Player
   m_Icon: {fileID: 0}

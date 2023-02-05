@@ -278,7 +278,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 17.1, y: 10.25}
+  m_Size: {x: 17.1, y: 2.7}
   m_EdgeRadius: 0
 --- !u!114 &1531606287
 MonoBehaviour:
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 4055722851028158336}
   - component: {fileID: 4055722851028158342}
   - component: {fileID: 4055722851028158343}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ant
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -396,8 +396,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: c38c77484356e3c48b5ed41a2032c652, type: 2}
-  IsInfected: 0
-  IsControlled: 0
+  IsInfected: 1
+  IsControlled: 1
   _headController: {fileID: 1531606287}
   _pointer: {fileID: 652023576}
   _groundCheckPoint: {fileID: 4055722851487763041}
