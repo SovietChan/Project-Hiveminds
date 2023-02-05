@@ -64,6 +64,8 @@ namespace Script.Runtime.Pawn
 
 		[Header("Layers & Tags")] [SerializeField]
 		private LayerMask _groundLayer;
+		[SerializeField]
+		private LayerMask _playerLayer;
 
 		public UnityEvent<InsectController> OnInfect;
 		#endregion
@@ -117,7 +119,8 @@ namespace Script.Runtime.Pawn
 			{
 				_moveInput.x = Input.GetAxisRaw("Horizontal");
 				_moveInput.y = Input.GetAxisRaw("Vertical");
-
+				horizontal = _moveInput.x; // -1 is left
+				vertical = _moveInput.y; // -1 is down
 				if (_moveInput.x != 0)
 					CheckDirectionToFace(_moveInput.x > 0);
 
@@ -152,8 +155,10 @@ namespace Script.Runtime.Pawn
 			{
 				//Ground Check
 				if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) &&
+				    !IsJumping || Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _playerLayer) &&
 				    !IsJumping) //checks if set box overlaps with ground
 				{
+					Debug.Log("Collided");
 					LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
 				}
 
@@ -274,7 +279,16 @@ namespace Script.Runtime.Pawn
 
 			#endregion
 		}
+		
+		
 
+		float horizontal;
+		float vertical;
+		float moveLimiter = 0.7f;
+
+		public float runSpeed = 20.0f;
+		
+		
 		private void FixedUpdate()
 		{
 			//Handle Run
@@ -286,6 +300,18 @@ namespace Script.Runtime.Pawn
 			//Handle Slide
 			if (IsSliding)
 				Slide();
+
+			if (Data.Type == InsectType.Beetle)
+			{
+				if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+				{
+					// limit movement speed diagonally, so you move at 70% speed
+					horizontal *= moveLimiter;
+					vertical *= moveLimiter;
+				} 
+
+				RB.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+			}
 		}
 
 	
@@ -492,7 +518,16 @@ namespace Script.Runtime.Pawn
 
 		private bool CanJump()
 		{
-			return LastOnGroundTime > 0 && !IsJumping;
+			bool canJump;
+			if (Data.Type == InsectType.Beetle)
+			{
+				canJump = true;
+			}
+			else
+			{
+				canJump = LastOnGroundTime > 0 && !IsJumping;
+			}
+			return canJump;
 		}
 
 		private bool CanWallJump()

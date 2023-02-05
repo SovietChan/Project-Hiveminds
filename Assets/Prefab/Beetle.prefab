@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5579179704144757366}
   - component: {fileID: 5579179704144757364}
-  - component: {fileID: 5579179704144757367}
   m_Layer: 0
   m_Name: Feet
   m_TagString: Untagged
@@ -169,19 +168,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &5579179704144757367
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5579179704144757369}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5579179704857738316
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +178,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5579179704857738317}
   - component: {fileID: 5579179704857738315}
-  - component: {fileID: 5579179704857738314}
+  - component: {fileID: 849500166}
+  - component: {fileID: 849500167}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -267,19 +254,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &5579179704857738314
-BoxCollider:
+--- !u!61 &849500166
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5579179704857738316}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 17.1, y: 10.25}
+  m_EdgeRadius: 0
+--- !u!114 &849500167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5579179704857738316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9e8d0018f86aa4986f6f3513e02d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5579179705004377417
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +305,6 @@ GameObject:
   - component: {fileID: 5579179705004377413}
   - component: {fileID: 5579179705004377412}
   - component: {fileID: 5579179705004377415}
-  - component: {fileID: 208347229}
   m_Layer: 0
   m_Name: Beetle
   m_TagString: Player
@@ -387,6 +398,7 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: f5ff2a065bb9f06408636d84da7a9bdc, type: 2}
   IsInfected: 0
   IsControlled: 0
+  _headController: {fileID: 849500167}
   _pointer: {fileID: 58203311}
   _groundCheckPoint: {fileID: 5579179704144757366}
   _groundCheckSize: {x: 3.91, y: 0.2}
@@ -396,9 +408,13 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
   OnInfect:
     m_PersistentCalls:
       m_Calls: []
+  runSpeed: 20
 --- !u!50 &5579179705004377412
 Rigidbody2D:
   serializedVersion: 4
@@ -446,32 +462,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 17.31, y: 9.07}
   m_EdgeRadius: 0
---- !u!61 &208347229
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5579179705004377417}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 9.47, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 17.1, y: 10.25}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 17.1, y: 10.25}
-  m_EdgeRadius: 0
 --- !u!1 &5579179705677859683
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +472,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5579179705677859680}
   - component: {fileID: 5579179705677859742}
-  - component: {fileID: 5579179705677859681}
   m_Layer: 0
   m_Name: Tail
   m_TagString: Untagged
@@ -557,16 +546,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &5579179705677859681
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5579179705677859683}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
