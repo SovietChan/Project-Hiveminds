@@ -18,7 +18,13 @@ public class finishLineScript : MonoBehaviour
     {
         
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            restartScene();
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         //insecttype
@@ -32,5 +38,10 @@ public class finishLineScript : MonoBehaviour
             SceneManager.LoadScene(SceneSelanjutnya);
         }
 
+    }
+
+    void restartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
