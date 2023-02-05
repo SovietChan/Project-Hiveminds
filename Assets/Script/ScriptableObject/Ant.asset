@@ -15,8 +15,8 @@ MonoBehaviour:
   Type: 0
   HealtySprite: {fileID: 21300000, guid: 1c65fc5508a032249ab2cc8a436e7e23, type: 3}
   InfectedSprite: {fileID: 21300000, guid: 0e0f3345fff4bad41a9f2438500b0a5c, type: 3}
-  gravityStrength: -2
-  gravityScale: 0.20387359
+  gravityStrength: -0.4
+  gravityScale: 0.040774718
   fallGravityMult: 1000
   maxFallSpeed: 1000
   fastFallGravityMult: 1000
@@ -29,10 +29,10 @@ MonoBehaviour:
   accelInAir: 0
   deccelInAir: 0
   doConserveMomentum: 0
-  jumpHeight: 1
-  jumpTimeToApex: 1
+  jumpHeight: 5
+  jumpTimeToApex: 5
   jumpForce: 2
-  jumpCutGravityMult: 50
+  jumpCutGravityMult: 1
   jumpHangGravityMult: 0
   jumpHangTimeThreshold: 0
   jumpHangAccelerationMult: 1

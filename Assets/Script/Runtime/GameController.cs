@@ -12,6 +12,7 @@ namespace Script.Runtime
         [SerializeField]
         private List<InsectController> _allInsect;
         private List<InsectController> _infectedInsects;
+        public cameraLookScript _camera;
 
         private int _currentInsectIndex;
 
@@ -34,6 +35,7 @@ namespace Script.Runtime
             
             _infectedInsects.Add(insect);
             _currentInsectIndex = _infectedInsects.Count - 1;
+            _camera._lookTarget = insect.gameObject;
         }
 
         private void Update()
@@ -54,6 +56,7 @@ namespace Script.Runtime
                     _currentInsectIndex = _infectedInsects.Count - 1;
                     _infectedInsects[_currentInsectIndex].ControlInsect(true);
                 }
+                _camera._lookTarget = _infectedInsects[_currentInsectIndex].gameObject;
             }
             if(Input.GetKeyDown(KeyCode.E))
             {
@@ -72,6 +75,7 @@ namespace Script.Runtime
                     _currentInsectIndex = 0;
                     _infectedInsects[_currentInsectIndex].ControlInsect(true);
                 }
+                _camera._lookTarget = _infectedInsects[_currentInsectIndex].gameObject;
             }
         }
         
