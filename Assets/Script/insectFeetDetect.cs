@@ -23,7 +23,7 @@ public class insectFeetDetect : MonoBehaviour
     {
         if(_readyToDetect)
         {
-            if(other.tag="player")
+            //if(other.tag="player")
             //_thisInsectController._feetPos=
         }
     }
