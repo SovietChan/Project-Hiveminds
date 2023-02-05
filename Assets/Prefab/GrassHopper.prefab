@@ -97,8 +97,7 @@ GameObject:
   - component: {fileID: 6968160345161202866}
   - component: {fileID: 6968160345161202867}
   - component: {fileID: 6968160345161202864}
-  - component: {fileID: 1014842985}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrassHopper
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -189,8 +188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: d4b943b4028ba8b4cbf6026d8bb36167, type: 2}
-  IsInfected: 1
-  IsControlled: 1
+  IsInfected: 0
+  IsControlled: 0
+  _headController: {fileID: 1346058425}
   _pointer: {fileID: 276065071}
   _groundCheckPoint: {fileID: 6968160346112729135}
   _groundCheckSize: {x: 2.33, y: 0.23}
@@ -200,9 +200,13 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
   OnInfect:
     m_PersistentCalls:
       m_Calls: []
+  runSpeed: 20
 --- !u!50 &6968160345161202867
 Rigidbody2D:
   serializedVersion: 4
@@ -250,32 +254,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.93, y: 6.9}
   m_EdgeRadius: 0
---- !u!61 &1014842985
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6968160345161202870}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 7.05, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.45, y: 6.56}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 10.45, y: 6.56}
-  m_EdgeRadius: 0
 --- !u!1 &6968160345679585332
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +264,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6968160345679585335}
   - component: {fileID: 6968160345679585329}
-  - component: {fileID: 6968160345679585334}
   m_Layer: 0
   m_Name: Tail
   m_TagString: Untagged
@@ -361,19 +338,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &6968160345679585334
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6968160345679585332}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6968160345885442129
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +348,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6968160345885442128}
   - component: {fileID: 6968160345885442130}
-  - component: {fileID: 6968160345885442131}
+  - component: {fileID: 823889611}
+  - component: {fileID: 823889612}
+  - component: {fileID: 1346058426}
+  - component: {fileID: 1346058425}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -459,19 +426,82 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &6968160345885442131
-BoxCollider:
+--- !u!61 &823889611
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6968160345885442129}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 17.1, y: 10.25}
+  m_EdgeRadius: 0
+--- !u!114 &823889612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968160345885442129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9e8d0018f86aa4986f6f3513e02d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1346058426
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968160345885442129}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 17.1, y: 10.25}
+  m_EdgeRadius: 0
+--- !u!114 &1346058425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968160345885442129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9e8d0018f86aa4986f6f3513e02d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6968160346112729132
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +512,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6968160346112729135}
   - component: {fileID: 6968160346112729129}
-  - component: {fileID: 6968160346112729134}
   m_Layer: 0
   m_Name: Feet
   m_TagString: Untagged
@@ -557,16 +586,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &6968160346112729134
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6968160346112729132}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}

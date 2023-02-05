@@ -71,6 +71,7 @@ public class gateScript : MonoBehaviour
                 if (_anotherGate != null)
                 {
                     _anotherGate._gateIsOpened = false;
+
                 }
             }
         }
