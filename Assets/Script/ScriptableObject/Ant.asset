@@ -17,10 +17,10 @@ MonoBehaviour:
   InfectedSprite: {fileID: 21300000, guid: 0e0f3345fff4bad41a9f2438500b0a5c, type: 3}
   gravityStrength: -2
   gravityScale: 0.20387359
-  fallGravityMult: 100
-  maxFallSpeed: 100
-  fastFallGravityMult: 25
-  maxFastFallSpeed: 25
+  fallGravityMult: 1000
+  maxFallSpeed: 1000
+  fastFallGravityMult: 1000
+  maxFastFallSpeed: 1000
   runMaxSpeed: 16
   runAcceleration: 13
   runAccelAmount: 40.625
@@ -32,16 +32,16 @@ MonoBehaviour:
   jumpHeight: 1
   jumpTimeToApex: 1
   jumpForce: 2
-  jumpCutGravityMult: 100
+  jumpCutGravityMult: 50
   jumpHangGravityMult: 0
   jumpHangTimeThreshold: 0
   jumpHangAccelerationMult: 1
   jumpHangMaxSpeedMult: 1
-  wallJumpForce: {x: 1, y: 2}
+  wallJumpForce: {x: 0, y: 0}
   wallJumpRunLerp: 0
   wallJumpTime: 0
   doTurnOnWallJump: 0
   slideSpeed: 0
   slideAccel: 0
-  coyoteTime: 0.103
-  jumpInputBufferTime: 0.071
+  coyoteTime: 0.01
+  jumpInputBufferTime: 0.01

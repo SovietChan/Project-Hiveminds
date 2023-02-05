@@ -155,7 +155,10 @@ namespace Script.Runtime.Pawn
 				}
 				//iqbal untuk ddeteksi kaki
 				transform.GetChild(1).GetComponent<insectFeetDetect>()._readyToDetect = true;
-				GetComponent<Rigidbody2D>().gravityScale = 1;
+				if (Data.Type != InsectType.Beetle)
+				{
+					GetComponent<Rigidbody2D>().gravityScale = 1;
+				}
 
 			}
 			else if(IsInfected&&!IsControlled)
@@ -267,8 +270,9 @@ namespace Script.Runtime.Pawn
 			#region GRAVITY
 
 			//Higher gravity if we've released the jump input or are falling
-			if(Data.Type!=InsectType.Beetle)
+			if(Data.Type != InsectType.Beetle)
             {
+	            
 				if (IsSliding)
 				{
 					SetGravityScale(0);
@@ -313,23 +317,14 @@ namespace Script.Runtime.Pawn
 
 		float horizontal;
 		float vertical;
-		float moveLimiter = 2.5f;
+		float moveLimiter = 20.5f;
 
 		public float runSpeed = 20.0f;
 		
 		
 		private void FixedUpdate()
 		{
-			//Handle Run
-			if (IsWallJumping)
-				Run(Data.wallJumpRunLerp);
-			else
-				Run(1);
-
-			//Handle Slide
-			if (IsSliding)
-				Slide();
-
+		
 			switch (Data.Type)
 			{
 				case InsectType.Beetle:
@@ -341,7 +336,15 @@ namespace Script.Runtime.Pawn
 						//vertical *= moveLimiter;
 							//transform.position += new Vector3(horizontal, vertical, 0) * moveLimiter * Time.deltaTime;
 							RB.velocity = new Vector2(horizontal , vertical) * runSpeed * Time.deltaTime;
-					} 
+					}
+					else
+					{
+						if (RB.velocity != Vector2.zero)
+						{
+							RB.velocity = Vector2.zero;
+						}
+						
+					}
 
 					//RB.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
 					break;
@@ -376,6 +379,19 @@ namespace Script.Runtime.Pawn
 					RB.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeeds);
 					break;
 				}
+				
+				case InsectType.GrassHopper:
+					//Handle Run
+					if (IsWallJumping)
+						Run(Data.wallJumpRunLerp);
+					else
+						Run(1);
+
+					//Handle Slide
+					if (IsSliding)
+						Slide();
+
+					break;
 			}
 		}
 
@@ -419,6 +435,7 @@ namespace Script.Runtime.Pawn
 
 		public void SetGravityScale(float scale)
 		{
+			Debug.Log("SET GRAVITY SCALE  "+ scale);
 			RB.gravityScale = scale;
 		}
 

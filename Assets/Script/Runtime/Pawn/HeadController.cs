@@ -15,7 +15,6 @@ public class HeadController : MonoBehaviour
         }
         if (col.CompareTag("Ground") || col.CompareTag("Player"))
         {
-            Debug.Log("Collided");
             _isClimbable = true;
         }
     }
