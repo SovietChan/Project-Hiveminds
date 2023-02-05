@@ -484,8 +484,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: f5ff2a065bb9f06408636d84da7a9bdc, type: 2}
-  IsInfected: 0
-  IsControlled: 0
+  IsInfected: 1
+  IsControlled: 1
   _headController: {fileID: 849500167}
   _pointer: {fileID: 58203311}
   _groundCheckPoint: {fileID: 5579179704144757366}
@@ -502,7 +502,7 @@ MonoBehaviour:
   OnInfect:
     m_PersistentCalls:
       m_Calls: []
-  runSpeed: 20
+  runSpeed: 200
 --- !u!50 &5579179705004377412
 Rigidbody2D:
   serializedVersion: 4
