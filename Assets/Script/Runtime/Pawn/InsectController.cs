@@ -70,6 +70,9 @@ namespace Script.Runtime.Pawn
 		private LayerMask _playerLayer;
 
 		public UnityEvent<InsectController> OnInfect;
+
+		//cek injakan
+		public Vector3 _feetPos;
 		#endregion
 		
 		private void Awake()
@@ -323,7 +326,7 @@ namespace Script.Runtime.Pawn
 				}
 				case InsectType.Ant:
 				{
-					float runSpeeds = 0;
+						float runSpeeds = 0;
 					
 					if (horizontal != 0 && vertical != 0) // Check for diagonal movement
 					{
